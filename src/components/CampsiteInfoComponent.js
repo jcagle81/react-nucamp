@@ -39,7 +39,7 @@ class CommentForm extends Component {
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                         <ModalBody>
-                            <LocalForm>
+                            <LocalForm onSubmit>
                                 <div className="form-group">
                                     <Label htmlFor="rating">Rating </Label>
                                         <Control.select model=".rating" className="form-control" validators={{require}}>
@@ -52,7 +52,11 @@ class CommentForm extends Component {
                                 </div>
                                 <div className="form-group">
                                     <Label htmlFor="author">Your Name</Label>
-                                        <Control.text model=".author" className="form-control" 
+                                        <Control.text model=".author" 
+                                        id="author"
+                                        name="author"
+                                        placeholder="Your Name"
+                                        className="form-control" 
                                         validators={{required,
                                             minLength: minLength(2),
                                             maxLength: maxLength(15)
@@ -60,7 +64,7 @@ class CommentForm extends Component {
                                     />
                                             <Errors
                                                 className="text-danger"
-                                                model=".yourName"
+                                                model=".author"
                                                 show="touched"
                                                 compnent="div"
                                                 messages={{
