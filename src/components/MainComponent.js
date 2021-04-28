@@ -7,7 +7,6 @@ import Home from './HomeComponent';
 import Contact from './ContactComponents';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { addComment } from '../redux/ActionCreators';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
 import { addComment, fetchCampsites } from '../redux/ActionCreators';

@@ -26,14 +26,6 @@ function Directory(props) {
         );
     });
     
-    const directory = props.campsites.campsites.map(campsite => {
-        return (
-            <div key={campsite.id} className="col-md-5 m-1">
-                <RenderDirectoryItem campsite={campsite} />
-            </div>
-        );
-    });
-
     if (props.campsites.isLoading) {
         return (
             <div className="container">
