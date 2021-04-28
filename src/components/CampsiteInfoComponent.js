@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardImg, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label, Form, FormGroup, Input } from 'reactstrap';
+import { Card, CardImg, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import {Control, LocalForm, Errors } from 'react-redux-form'
-import Row from 'reactstrap/lib/Row';
+import { Loading } from './LoadingComponent';
 
 const required = val => val && val.length;
 const maxLength= len => val => !val || (val.length <= len);
@@ -138,15 +138,37 @@ function CampsiteInfo(props) {
         return (
             <div className="container">
                 <div className="row">
-                <div className="col">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to="/directory">Directory</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
-                    </Breadcrumb>
-                    <h2>{props.campsite.name}</h2>
-                    <hr />
+                    <Loading />
                 </div>
             </div>
+        );
+    }
+
+    if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (props.campsite) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/directory">Directory</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <h2>{props.campsite.name}</h2>
+                        <hr />
+                    </div>
+                </div>
                 <div className="row">
                     <RenderCampsite campsite={props.campsite} />
                     <RenderComments comments={props.comments}
