@@ -42,7 +42,7 @@ class CommentForm extends Component {
                             <LocalForm onSubmit>
                                 <div className="form-group">
                                     <Label htmlFor="rating">Rating </Label>
-                                        <Control.select model=".rating" className="form-control" validators={{require}}>
+                                        <Control.select model=".rating" className="form-control" validators={{required}}>
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
