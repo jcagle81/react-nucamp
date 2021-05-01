@@ -27,9 +27,11 @@ function RenderPartner ({partner}) {
 function PartnerList(props) {
     const partners = props.partners.partners.map(partner => {
         return (
-            <Media tag="li" key={partner.id}>
-                    <RenderPartner partner={partner} />
-            </Media>
+            <Fade in key={partner.id}>
+                <Media tag="li">
+                        <RenderPartner partner={partner} />
+                </Media>
+            </Fade>
         );
     });
     if (props.partners.isLoading) {
@@ -47,11 +49,12 @@ function PartnerList(props) {
 
     return (
     <div className="col mt-4">
-        <Fade in key={partners.id}>
-            <Media list>
+        <Media list>
+            <Stagger in>
                 {partners}
-            </Media>
-        </Fade>
+            </Stagger>
+        </Media>
+        
     </div>
     );
 }
@@ -108,10 +111,8 @@ function PartnerList(props) {
                 <div className="col-12">
                     <h3>Community Partners</h3>
                 </div>
-                <Stagger in>
-                    <PartnerList partners={props.partners} />
-                </Stagger>
-            </div>
+                <PartnerList partners={props.partners} />
+                </div>
         </div>
     );
 }

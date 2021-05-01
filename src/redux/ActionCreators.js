@@ -182,7 +182,7 @@ export const addPartners = partners => ({
     payload: partners
 });
 
-export const postFeedback = (campsiteId, rating, author, text, feedback) => {
+export const postFeedback = (feedback) => dispatch => {
     
     return fetch(baseUrl + 'feedback', {
         method: "POST",
@@ -206,6 +206,6 @@ export const postFeedback = (campsiteId, rating, author, text, feedback) => {
     .then(alert('Thank you for your feedback! \r\n\r\n You Submitted: ' + JSON.stringify(feedback)))
     .catch(error => {
         console.log('post feedback', error.message);
-        alert('Thank you for your feedback\nError:' + error.message);
+        alert('The day I graced your village was the most important day of you life...For me, it was a Tuesday\nError:' + error.message);
     });
 };
